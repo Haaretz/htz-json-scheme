@@ -1,31 +1,95 @@
-import { Content } from './base';
-import { BasePage, BaseSlots, SlotElements, PageType, } from './basePage';
+import { Content, TaxonomyItem, } from './base';
+import {
+  BasePage,
+  BaseSlots,
+  SlotElements,
+  PageType,
+} from './basePage';
 
 interface ArticleSlots extends BaseSlots {
   preMasthead: SlotElements,
   masthead: SlotElements,
   top: SlotElements,
-  main: MainArticleSlot,
-  aside: SlotElements,
+  main: MainArticleSlot, // Exploded
+  aside?: SlotElements,
   bottom: SlotElements,
   siteFooter: SlotElements,
   postSiteFooter: SlotElements,
 }
 
-type Author = { }
+interface Author extends Content {
+  name: string;
+  url: string;
+  // TODO: Check types
+  authorType: "htz" | "hdc" | "tm" | "blogger" | "guest";
+  image: string; // The cloudinary image ID
+  twitter: string;
+  facebook: string;
+  gplus: string;
+  email: string;
+  hasEmailAlerts: boolean;
+  // hasPushAlerts: boolean;
+};
 
-enum BodyContentTypes {
-  Paragraph,
-  Image,
-  Embed,
-  Related,
-  Advert,
-  // ...
+type Paragraph = {
+  content: 'string';
+};
+
+interface Pullquote extends Content {
+  pullquoteType: "default" | "hasQuote" | "hasPic";
+  image?: string; // The cloudinary image ID
+  content: string;
+  citation?: string;
+}
+interface Image extends Content {
+  alt: string;
+  caption?: string;
+  credit: string;
+  image: string; // The cloudinary image ID
+  imagePosition: string; // The cloudinary image ID
+  title?: string;
+};
+interface Gallery extends Content {
+  title?: string;
+  images: Image[];
+};
+interface Embed extends Content {
+  embedType: string;
+  identifier: string;
+};
+interface Related extends Content {
+  items: Content[];
+};
+interface Advert extends Content {
+  style: string;
+  class: string;
+  id: string;
+  audianceTarget: string;
+};
+interface LiveblogCard extends Content {
+  title: string;
+  titleMobile?: string;
+  contentName: string;
+  keyEvent?: string;
+  cardId?: string;
+  pubDate: Date;
+  modDate?: Date
+  content: ArticleBodyContentTypes[];
+  tags?: TaxonomyItem[];
 }
 
-type BodyContent = BodyContentTypes[];
+type ArticleBodyContentTypes = {
+  [index: number]:
+    Paragraph |
+    Image |
+    Embed |
+    Related |
+    Advert
+}
 
-interface ArticleContent extends Content {
+type ArticleBodyContent = ArticleBodyContentTypes[];
+
+interface Article extends Content {
   exclusive?: string;
   mobileExclusive?: string;
   title: string;
@@ -36,23 +100,33 @@ interface ArticleContent extends Content {
   credit?: string;
   reportingFrom?: string;
   pubDate: Date;
+  leadingMedia?: Image | Embed | Gallery;
+  body: ArticleBodyContent;
   modDate?: Date
-  body: BodyContent;
+  tags?: TaxonomyItem[];
+  comments?: string; // The comments' contentId
+}
+
+interface ArticleLiveBlog extends Article {
+  isLiveUpdate: boolean;
+  ShowCardsDate: boolean;
+  liveBlogMetaTitle?: string;
+  cards: LiveblogCard[];
 }
 
 interface MainArticleSlot extends SlotElements {
-  0: ArticleContent;
+  0: Article;
   [index: number]: Content;
   // [index: number]: ArticleContent;
   // [index: number]?: Content;
 }
 
 interface ArticlePage extends BasePage {
-  pageType: PageType;
+  pageType: 'article' |
+    'articleMagazine' |
+    'articleLiveBlog' |
+    'articleRecipe' |
+    'articleReviewMovie' |
+    'articleReviewBook';
   slots: ArticleSlots;
-  // slots: {
-  //   main: [
-  //   ],
-  //   aside: []
-  // }
 }

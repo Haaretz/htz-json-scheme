@@ -7,5 +7,22 @@ export type Content = {
 
 export type TaxonomyItem = {
   name: string;
-  url: URL;
+  url: string;
+  pathSegment: string;
+  contentId: string;
 }
+
+export type SlotElements = Content[];
+
+export type BaseSlots = {
+  [slotName: string]: SlotElements
+};
+
+export interface List extends Content {
+  view: 'string';
+  title: string;
+  url?: string;
+  urlDescription?: string
+  hasPagination: boolean;
+  items: Content[];
+};
