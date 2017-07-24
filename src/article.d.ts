@@ -1,11 +1,56 @@
-import { Content, TaxonomyItem, } from './base';
+import {
+  Advert,
+  Author,
+  BaseSlots,
+  Content,
+  Embed,
+  Gallery,
+  Image,
+  Related,
+  SlotElements,
+  TaxonomyItem,
+} from './base';
+
 import {
   BasePage,
-  BaseSlots,
-  SlotElements,
   PageType,
 } from './basePage';
 
+
+/////////////////////
+//  Content Types  //
+/////////////////////
+type Paragraph = {
+  content: 'string';
+};
+
+interface Pullquote extends Content {
+  pullquoteType: "default" | "hasQuote" | "hasPic";
+  image?: string; // The cloudinary image ID
+  content: string;
+  citation?: string;
+}
+
+
+interface LiveblogCard extends Content {
+  title: string;
+  titleMobile?: string;
+  contentName: string;
+  keyEvent?: string;
+  cardId?: string;
+  pubDate: Date;
+  modDate?: Date
+  author?: Author;
+  reportingFrom?: string;
+  credit?: string;
+  content: ArticleBodyContentTypes[];
+  tags?: TaxonomyItem[];
+}
+
+
+///////////////////////////////
+//  Slots and Content Lists  //
+///////////////////////////////
 interface ArticleSlots extends BaseSlots {
   preMasthead: SlotElements,
   masthead: SlotElements,
@@ -17,65 +62,11 @@ interface ArticleSlots extends BaseSlots {
   postSiteFooter: SlotElements,
 }
 
-interface Author extends Content {
-  name: string;
-  url: string;
-  // TODO: Check types
-  authorType: "htz" | "hdc" | "tm" | "blogger" | "guest";
-  image: string; // The cloudinary image ID
-  twitter: string;
-  facebook: string;
-  gplus: string;
-  email: string;
-  hasEmailAlerts: boolean;
-  // hasPushAlerts: boolean;
-};
-
-type Paragraph = {
-  content: 'string';
-};
-
-interface Pullquote extends Content {
-  pullquoteType: "default" | "hasQuote" | "hasPic";
-  image?: string; // The cloudinary image ID
-  content: string;
-  citation?: string;
-}
-interface Image extends Content {
-  alt: string;
-  caption?: string;
-  credit: string;
-  image: string; // The cloudinary image ID
-  imagePosition: string; // The cloudinary image ID
-  title?: string;
-};
-interface Gallery extends Content {
-  title?: string;
-  images: Image[];
-};
-interface Embed extends Content {
-  embedType: string;
-  identifier: string;
-};
-interface Related extends Content {
-  items: Content[];
-};
-interface Advert extends Content {
-  style: string;
-  class: string;
-  id: string;
-  audianceTarget: string;
-};
-interface LiveblogCard extends Content {
-  title: string;
-  titleMobile?: string;
-  contentName: string;
-  keyEvent?: string;
-  cardId?: string;
-  pubDate: Date;
-  modDate?: Date
-  content: ArticleBodyContentTypes[];
-  tags?: TaxonomyItem[];
+interface MainArticleSlot extends SlotElements {
+  0: Article;
+  [index: number]: Content;
+  // [index: number]: ArticleContent;
+  // [index: number]?: Content;
 }
 
 type ArticleBodyContentTypes = {
@@ -89,6 +80,10 @@ type ArticleBodyContentTypes = {
 
 type ArticleBodyContent = ArticleBodyContentTypes[];
 
+
+/////////////////////
+//  Article types  //
+/////////////////////
 interface Article extends Content {
   exclusive?: string;
   mobileExclusive?: string;
@@ -108,25 +103,28 @@ interface Article extends Content {
 }
 
 interface ArticleLiveBlog extends Article {
+  // Is the article still being live updated
   isLiveUpdate: boolean;
+  // Show the update date of every card
   ShowCardsDate: boolean;
+  // SEO title to be prepended to each card's meta title
   liveBlogMetaTitle?: string;
   cards: LiveblogCard[];
 }
 
-interface MainArticleSlot extends SlotElements {
-  0: Article;
-  [index: number]: Content;
-  // [index: number]: ArticleContent;
-  // [index: number]?: Content;
-}
 
+//////////////////////
+//  Page Structure  //
+//////////////////////
 interface ArticlePage extends BasePage {
   pageType: 'article' |
     'articleMagazine' |
     'articleLiveBlog' |
-    'articleRecipe' |
-    'articleReviewMovie' |
-    'articleReviewBook';
+    // 'articleInterview' |
+    // 'articleRecipe' |
+    // 'articleReviewMovie' |
+    // 'articleReviewBook' |
+    'event' |
+    'venue'
   slots: ArticleSlots;
 }

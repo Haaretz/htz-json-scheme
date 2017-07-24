@@ -15,6 +15,8 @@ export type PageType =
   'articleMagazine' |
   'articleLiveBlog' |
   'articleRecipe' |
+  'articleInterview' |
+  'articleReviewResturant' |
   'articleReviewMovie' |
   'articleReviewBook' |
   'articleCards' |
