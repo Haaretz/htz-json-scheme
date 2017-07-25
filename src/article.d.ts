@@ -7,7 +7,6 @@ import {
   Gallery,
   Image,
   Related,
-  SlotElements,
   TaxonomyItem,
 } from './base';
 
@@ -24,26 +23,63 @@ type Paragraph = {
   content: 'string';
 };
 
+
+/** The layout position of an image inside an article's body */
+type ImageLayoutPosition = 'base' | 'wide' | 'leftLeaning' | 'rightLeaning' | 'wrapped';
+
+/**
+ * An image inside an article's body.
+ */
+interface ImageArticleBody extends Image {
+  /** The layout position of an image inside an article's body */
+  imageLayoutPosition?: ImageLayoutPosition;
+  /** The aspect ratio to use for drawing the image*/
+  aspectRatio?: 'square' | 'regulare' | 'landscape' | 'headline' | 'vertical' | 'auto';
+}
+
+/**
+ * A Pullquote element
+ */
 interface Pullquote extends Content {
+  /** The type of the pullquote */
   pullquoteType: "default" | "hasQuote" | "hasPic";
-  image?: string; // The cloudinary image ID
+  /** A cloudinary ID for the image associated with the pullquote */
+  image?: string;
+  /** The textual content of the pullquote */
   content: string;
+  /** The pullquote's citation. Usually a person's name */
   citation?: string;
 }
 
 
-interface LiveblogCard extends Content {
+/**
+ * A single liveblog element
+ */
+interface LiveblogItem extends Content {
+  /* The title of the individual element */
   title: string;
+  /* The title of the individual element to be displayed in mobile view */
   titleMobile?: string;
+  /** The element's name. Used for generating a shareable anchor */
   contentName: string;
+  /** A title to be used in the liveblog's `key events` list */
   keyEvent?: string;
+  /** Used for creating uniq links to each liveblog element. An SEO thing */
   cardId?: string;
+  /** The item's publishing date */
   pubDate: Date;
+  /** The item's last modification date */
   modDate?: Date
-  author?: Author;
+  /**
+   * An array of authors, containing either a `string`,
+   * representing a name, or `Author` objects
+   */
+  authors?: (Author | string)[];
+  /** A text indicating where an author is reporting from */
   reportingFrom?: string;
-  credit?: string;
-  content: ArticleBodyContentTypes[];
+  /** The elements composing the item's body */
+  body: ArticleBodyContentTypes[];
+  /** Tags pertaining directly to the liveblog item */
   tags?: TaxonomyItem[];
 }
 
@@ -51,72 +87,127 @@ interface LiveblogCard extends Content {
 ///////////////////////////////
 //  Slots and Content Lists  //
 ///////////////////////////////
+/**
+ * The slots structure of an article page
+ */
 interface ArticleSlots extends BaseSlots {
-  preMasthead: SlotElements,
-  masthead: SlotElements,
-  top: SlotElements,
+  /** A slot at the top of the page, above the masthead */
+  preMasthead: Content[],
+  /**
+   * A slot containing the page's masthead
+   *
+   * @TODO Decide if this should be served exploded
+   */
+  masthead: Content[],
+  /** A slot positioned between the masthead and the main content */
+  top: Content[],
+  /**
+   * A slot the main page's main content
+   *
+   * @Note **Should be served exploded**
+   */
   main: MainArticleSlot, // Exploded
-  aside?: SlotElements,
-  bottom: SlotElements,
-  siteFooter: SlotElements,
-  postSiteFooter: SlotElements,
+  /** A slot containing the content left of the article */
+  aside?: Content[],
+  /** A slot positioned between the main content and the footer */
+  bottom: Content[],
+  /**
+   * A slot containing the page's footer
+   */
+  siteFooter: Content[],
+  /** A slot at the bottom of the page, bellow the footer */
+  postSiteFooter: Content[],
 }
 
-interface MainArticleSlot extends SlotElements {
-  0: Article;
-  [index: number]: Content;
-  // [index: number]: ArticleContent;
-  // [index: number]?: Content;
-}
+/**
+ * The page's main content slot.
+ *
+ * Contains the `Article` as well as any other content.
+ */
+type MainArticleSlot = (Article | Content)[];
 
-type ArticleBodyContentTypes = {
-  [index: number]:
-    Paragraph |
-    Image |
-    Embed |
-    Related |
-    Advert
-}
-
-type ArticleBodyContent = ArticleBodyContentTypes[];
-
+/** The types of content an article body may contain */
+type ArticleBodyContentTypes = (
+  Paragraph |
+  ImageArticleBody |
+  Embed |
+  Related |
+  Advert
+);
 
 /////////////////////
 //  Article types  //
 /////////////////////
+/** The contents of an article */
 interface Article extends Content {
+  /** The kicker of the article */
   exclusive?: string;
+  /** An alternative kicker to be displayed in small viewports */
   mobileExclusive?: string;
+  /** The title of the article */
   title: string;
+  /** An alternative title to be displayed in small viewports */
   mobileTitle?: string;
+  /** The article's subtitle */
   subtitle?: string;
+  /** An alternative subtitle to be displayed in small viewports */
   mobileSubtitle?: string;
-  authors?: Author[];
-  credit?: string;
+  /**
+   * An array of authors, containing either a `string`,
+   * representing a name, or `Author` objects
+   */
+  authors?: (Author | string)[];
+  /** A text indicating where an author is reporting from */
   reportingFrom?: string;
+  /** The article's publishing date */
   pubDate: Date;
-  leadingMedia?: Image | Embed | Gallery;
-  body: ArticleBodyContent;
+  /** The article's last modification date */
   modDate?: Date
+  /** Media to be displayed as the article's opeing figure */
+  leadingMedia?: Image | Embed | Gallery;
+  /** The elements composing the article's body */
+  body: ArticleBodyContentTypes[];
+  /** Tags pertaining to the article */
   tags?: TaxonomyItem[];
-  comments?: string; // The comments' contentId
+  /** The `contentId` of the of the article's comments content element */
+  comments?: string;
 }
 
+/**
+ * Live Blog Article
+ */
 interface ArticleLiveBlog extends Article {
-  // Is the article still being live updated
+  /** Indicate if the article is being live-updated */
   isLiveUpdate: boolean;
-  // Show the update date of every card
-  ShowCardsDate: boolean;
-  // SEO title to be prepended to each card's meta title
+  /** Indicate if the update date of every card should be shown */
+  showCardsDate: boolean;
+  /** An SEO title to be prepended to each card's meta title */
   liveBlogMetaTitle?: string;
-  cards: LiveblogCard[];
+  /**
+   * An array of `LiveBlogCard`s
+   * @Note **Should be served exploded**
+   */
+  cards: LiveblogItem[];
 }
+
+// interface Event extends Article {
+//   englishTittle?: string;
+//   price?: string;
+//   ages?: string;
+//   genre?: string;
+//   related?: string;
+//   cards: LiveblogItem[];
+// }
 
 
 //////////////////////
 //  Page Structure  //
 //////////////////////
+/**
+ * An article page's structure
+ */
 interface ArticlePage extends BasePage {
+  /** The article's type */
   pageType: 'article' |
     'articleMagazine' |
     'articleLiveBlog' |
@@ -126,5 +217,6 @@ interface ArticlePage extends BasePage {
     // 'articleReviewBook' |
     'event' |
     'venue'
+  /** The slots in the page */
   slots: ArticleSlots;
 }
