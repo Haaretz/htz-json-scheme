@@ -2,8 +2,10 @@
   "compilerOptions": {
     "module": "es6",
     "allowJs": true,
-    "target": "es6",
+    "declaration": true,
+    "target": "es2017",
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "moduleResolution":"node",
     "emitDecoratorMetadata": true,
     "noEmitHelpers": true,
@@ -11,8 +13,10 @@
     "sourceMap": true,
     "lib": ["DOM", "ES6", "ES2016", "ES2017", "DOM.Iterable", "ScriptHost"]
   },
-  "awesomeTypescriptLoaderOptions": {
-    "useBabel": true,
-    "useCache": true
-  }
+  "include": [
+    "src/**/*"
+  ],
+  "exclude":[
+    "node_modules"
+  ]
 }
