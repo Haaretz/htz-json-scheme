@@ -10,7 +10,6 @@
     "typedoc": "^0.7.1"
   },
   "scripts": {
-    "genDocs": "typedoc --name htz-json-scheme --target ES6 --excludeExternals --includeDeclarations --out docs/ src/",
-    "rmDocs": "rm -rf docs/**/*"
+    "docs": "typedoc --name htz-json-scheme --target ES6 --excludeExternals --includeDeclarations --out docs/ src/ && touch docs/.nojekyll"
   }
 }
