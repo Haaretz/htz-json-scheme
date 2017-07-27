@@ -19,9 +19,9 @@ import {
 /////////////////////
 //  Content Types  //
 /////////////////////
-type Paragraph = {
+interface Paragraph {
   content: 'string';
-};
+}
 
 
 /** The layout position of an image inside an article's body */

@@ -7,7 +7,11 @@ export interface Content {
   inputTemplate: string;
   /** A unique content id */
   contentId: string;
-  /** The content's instance name */
+  /**
+   * The content's instance name
+   * Will often be used as the title of a `Content` item,
+   * for instance an `Author`'s name or an `Articls`'s title.
+   */
   contentName?: string;
 }
 
@@ -120,8 +124,6 @@ export interface Advert extends Content {
  * An object containing all details of a specific author
  */
 export interface Author extends Content {
-  /** The author's name */
-  name: string;
   /** The URL author's author-page. */
   url: string;
   /**
