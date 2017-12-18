@@ -65,14 +65,43 @@ export interface List extends Content {
 export interface Image extends Content {
   /** Text used for describing the image to non-sighted users */
   alt: string;
-  /** The text used  as the imags's caption */
-  caption?: string;
+  /** Image Text: the text used  as part of the image's caption */
+  description?: string;
   /** The image's credit information */
-  credit: string;
+  credit?: string;
+  /** The object should have keys representing aspect names (belgrade|landscape|headline|regular|square|vertical|full), each an aspect object, with the following keys:
+   * { width, height, x, y } */
+  aspects?: {
+    belgrade?: Aspect;
+    landscape?: Aspect;
+    headline?: Aspect;
+    regular?: Aspect;
+    square?: Aspect;
+    vertical?: Aspect;
+    full?: Aspect;
+  };
+  /** Whether the image object is an animated gif */
+  isAnimated: boolean;
   /** A cloudinary ID */
-  image: string;
+  imgArray: Object[];
   /** Text for the title attribute. Shows up as a tooltip when the mouse hovers above the image */
-  title?: string;
+  imageType: "image"|"infographic";
+}
+
+
+/**
+ * An object that represent a cropping aspect for an image
+ */
+export interface Aspect {
+  /** The width of the image */
+  width: number;
+  /** The height of the image */
+  height: number;
+  /** The origin x coordinate for the aspect */
+  x: number;
+  /** The origin y coordinate for the aspect */
+  y: number;
+
 }
 
 
