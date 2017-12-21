@@ -19,9 +19,27 @@ import {
 /////////////////////
 //  Content Types  //
 /////////////////////
-interface Paragraph {
-  content: 'string';
+
+/** A key-value map of HTMLElement attributes and their values */
+interface ParagraphNestedTagAttrs {
+  [attr: string]: string | boolean | null;
 }
+
+/** An object describing the properties of elements nested inside a Paragraph */
+interface ParagraphNestedTag {
+  /** The nested element's tagname */
+  tagName: string;
+  /** The DOM element's attributes */
+  attrs: ParagraphNestedTagAttrs;
+  /** The content of the DOM element */
+  content: string | null | ParagraphNestedTag;
+}
+
+/**
+ * An array representing the elements of a paragraph so that they can
+ * easily be recomposed using the correct components in the front end
+ */
+type Paragraph = ParagraphNestedTag[];
 
 
 /** The layout position of an image inside an article's body */
