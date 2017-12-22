@@ -32,14 +32,14 @@ interface ParagraphNestedTag {
   /** The DOM element's attributes */
   attrs: ParagraphNestedTagAttrs;
   /** The content of the DOM element */
-  content: string | null | ParagraphNestedTag;
+  content: string | null | ParagraphNestedTag | Paragraph;
 }
 
 /**
  * An array representing the elements of a paragraph so that they can
  * easily be recomposed using the correct components in the front end
  */
-type Paragraph = ParagraphNestedTag[];
+type Paragraph = (string | ParagraphNestedTag)[];
 
 
 /** The layout position of an image inside an article's body */
