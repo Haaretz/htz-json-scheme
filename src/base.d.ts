@@ -58,6 +58,13 @@ export interface List extends Content {
   items: Content[];
 }
 
+/** Data about an individual image in an `imgArray` */
+export interface ImgArrayItem {
+  imgName: string;
+  /** The cloudinaryVersion of the image */
+  version: string;
+}
+
 
 /**
  * An image object
@@ -82,8 +89,8 @@ export interface Image extends Content {
   };
   /** Whether the image object is an animated gif */
   isAnimated: boolean;
-  /** A cloudinary ID */
-  imgArray: Object[];
+  /** Data about each individual image asociated with the different use cases */
+  imgArray: ImgArrayItem[];
   /** Text for the title attribute. Shows up as a tooltip when the mouse hovers above the image */
   imageType: "image"|"infographic";
 }

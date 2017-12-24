@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BasePage | htz-json-scheme</title>
+	<title>ImgArrayItem | htz-json-scheme</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,13 +54,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_basepage_d_.html">&quot;basePage.d&quot;</a>
+					<a href="../modules/_base_d_.html">&quot;base.d&quot;</a>
 				</li>
 				<li>
-					<a href="_basepage_d_.basepage.html">BasePage</a>
+					<a href="_base_d_.imgarrayitem.html">ImgArrayItem</a>
 				</li>
 			</ul>
-			<h1>Interface BasePage</h1>
+			<h1>Interface ImgArrayItem</h1>
 		</div>
 	</div>
 </header>
@@ -70,26 +70,15 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The structure of a basic page.</p>
+						<p>Data about an individual image in an <code>imgArray</code></p>
 					</div>
-					<p><strong>Not for direct use</strong></p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_base_d_.content.html" class="tsd-signature-type">Content</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">BasePage</span>
-								<ul class="tsd-hierarchy">
-									<li>
-										<a href="_article_d_.articlepage.html" class="tsd-signature-type">ArticlePage</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
+						<span class="target">ImgArrayItem</span>
 					</li>
 				</ul>
 			</section>
@@ -100,13 +89,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_basepage_d_.basepage.html#contentid" class="tsd-kind-icon">content<wbr>Id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_basepage_d_.basepage.html#contentname" class="tsd-kind-icon">content<wbr>Name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_basepage_d_.basepage.html#inputtemplate" class="tsd-kind-icon">input<wbr>Template</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_basepage_d_.basepage.html#lineage" class="tsd-kind-icon">lineage</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_basepage_d_.basepage.html#pagetype" class="tsd-kind-icon">page<wbr>Type</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_basepage_d_.basepage.html#seodata" class="tsd-kind-icon">seo<wbr>Data</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_basepage_d_.basepage.html#slots" class="tsd-kind-icon">slots</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_base_d_.imgarrayitem.html#imgname" class="tsd-kind-icon">img<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_base_d_.imgarrayitem.html#version" class="tsd-kind-icon">version</a></li>
 							</ul>
 						</section>
 					</div>
@@ -114,113 +98,28 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="contentid" class="tsd-anchor"></a>
-					<h3>content<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">content<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="imgname" class="tsd-anchor"></a>
+					<h3>img<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">img<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_base_d_.content.html">Content</a>.<a href="_base_d_.content.html#contentid">contentId</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Haaretz/htz-json-scheme/blob/56329a2/src/base.d.ts#L9">base.d.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/Haaretz/htz-json-scheme/blob/56329a2/src/base.d.ts#L63">base.d.ts:63</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>A unique content id</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="contentname" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> content<wbr>Name</h3>
-					<div class="tsd-signature tsd-kind-icon">content<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="_base_d_.content.html">Content</a>.<a href="_base_d_.content.html#contentname">contentName</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/Haaretz/htz-json-scheme/blob/56329a2/src/base.d.ts#L15">base.d.ts:15</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The content&#39;s instance name
-								Will often be used as the title of a <code>Content</code> item,
-							for instance an <code>Author</code>&#39;s name or an <code>Articls</code>&#39;s title.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="inputtemplate" class="tsd-anchor"></a>
-					<h3>input<wbr>Template</h3>
-					<div class="tsd-signature tsd-kind-icon">input<wbr>Template<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="_base_d_.content.html">Content</a>.<a href="_base_d_.content.html#inputtemplate">inputTemplate</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/Haaretz/htz-json-scheme/blob/56329a2/src/base.d.ts#L7">base.d.ts:7</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The name of the content type, e.g., <code>&#39;youtubeVideoEmbed&#39;</code></p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="lineage" class="tsd-anchor"></a>
-					<h3>lineage</h3>
-					<div class="tsd-signature tsd-kind-icon">lineage<span class="tsd-signature-symbol">:</span> <a href="../modules/_basepage_d_.html#lineage" class="tsd-signature-type">Lineage</a></div>
+					<a name="version" class="tsd-anchor"></a>
+					<h3>version</h3>
+					<div class="tsd-signature tsd-kind-icon">version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Haaretz/htz-json-scheme/blob/56329a2/src/basePage.d.ts#L72">basePage.d.ts:72</a></li>
+							<li>Defined in <a href="https://github.com/Haaretz/htz-json-scheme/blob/56329a2/src/base.d.ts#L65">base.d.ts:65</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The pages lineage, i.e., as in breadcrumbs</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="pagetype" class="tsd-anchor"></a>
-					<h3>page<wbr>Type</h3>
-					<div class="tsd-signature tsd-kind-icon">page<wbr>Type<span class="tsd-signature-symbol">:</span> <a href="../modules/_basepage_d_.html#pagetype" class="tsd-signature-type">PageType</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Haaretz/htz-json-scheme/blob/56329a2/src/basePage.d.ts#L70">basePage.d.ts:70</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The page&#39;s page type</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="seodata" class="tsd-anchor"></a>
-					<h3>seo<wbr>Data</h3>
-					<div class="tsd-signature tsd-kind-icon">seo<wbr>Data<span class="tsd-signature-symbol">:</span> <a href="_basepage_d_.seodata.html" class="tsd-signature-type">SeoData</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Haaretz/htz-json-scheme/blob/56329a2/src/basePage.d.ts#L74">basePage.d.ts:74</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>SEO data pertaining to the site</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="slots" class="tsd-anchor"></a>
-					<h3>slots</h3>
-					<div class="tsd-signature tsd-kind-icon">slots<span class="tsd-signature-symbol">:</span> <a href="_base_d_.baseslots.html" class="tsd-signature-type">BaseSlots</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Haaretz/htz-json-scheme/blob/56329a2/src/basePage.d.ts#L76">basePage.d.ts:76</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The slots in the page</p>
+							<p>The cloudinaryVersion of the image</p>
 						</div>
 					</div>
 				</section>
@@ -235,54 +134,63 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_article_d_.html">"article.d"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_base_d_.html">"base.d"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_basepage_d_.html">"base<wbr>Page.d"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_base_d_.advert.html" class="tsd-kind-icon">Advert</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_base_d_.aspect.html" class="tsd-kind-icon">Aspect</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_base_d_.author.html" class="tsd-kind-icon">Author</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_base_d_.baseslots.html" class="tsd-kind-icon">Base<wbr>Slots</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_base_d_.content.html" class="tsd-kind-icon">Content</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_base_d_.embed.html" class="tsd-kind-icon">Embed</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_base_d_.gallery.html" class="tsd-kind-icon">Gallery</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_base_d_.image.html" class="tsd-kind-icon">Image</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_basepage_d_.basepage.html" class="tsd-kind-icon">Base<wbr>Page</a>
+						<a href="_base_d_.imgarrayitem.html" class="tsd-kind-icon">Img<wbr>Array<wbr>Item</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_basepage_d_.basepage.html#contentid" class="tsd-kind-icon">content<wbr>Id</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_basepage_d_.basepage.html#contentname" class="tsd-kind-icon">content<wbr>Name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_basepage_d_.basepage.html#inputtemplate" class="tsd-kind-icon">input<wbr>Template</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_base_d_.imgarrayitem.html#imgname" class="tsd-kind-icon">img<wbr>Name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_basepage_d_.basepage.html#lineage" class="tsd-kind-icon">lineage</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_basepage_d_.basepage.html#pagetype" class="tsd-kind-icon">page<wbr>Type</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_basepage_d_.basepage.html#seodata" class="tsd-kind-icon">seo<wbr>Data</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_basepage_d_.basepage.html#slots" class="tsd-kind-icon">slots</a>
+								<a href="_base_d_.imgarrayitem.html#version" class="tsd-kind-icon">version</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_basepage_d_.seodata.html" class="tsd-kind-icon">Seo<wbr>Data</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_base_d_.list.html" class="tsd-kind-icon">List</a>
 					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_basepage_d_.html#lineage" class="tsd-kind-icon">Lineage</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_base_d_.related.html" class="tsd-kind-icon">Related</a>
 					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_basepage_d_.html#pagetype" class="tsd-kind-icon">Page<wbr>Type</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_base_d_.taxonomyitem.html" class="tsd-kind-icon">Taxonomy<wbr>Item</a>
 					</li>
 				</ul>
 			</nav>
