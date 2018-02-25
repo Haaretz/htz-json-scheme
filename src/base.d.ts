@@ -164,10 +164,17 @@ export interface Author extends Content {
   url: string;
   /**
    * Indicates what type of author we have in hand.
-   *
-   * @TODO: Check that authorType options indeed correctly correlate
    */
-  authorType: "htz" | "hdc" | "tm" | "blogger" | "guest";
+  authorType: "themarker" |
+    "haaretz" |
+    "exterior" |
+    "agencies" |
+    "hct" |
+    "hcr" |
+    "phot" |
+    "col" |
+    "unknown" |
+    "none";
   /** A cloudinary ID for the image associated with the pullquote */
   image: string;
   /** A URL to the author's twitter page */
@@ -178,8 +185,6 @@ export interface Author extends Content {
   gplus: string;
   /** A author's email address */
   email: string;
-  /** Indicates if it is possible to subscribe to email alerts for the author */
+  /** Indicates if it is possible to subscribe to push and email alerts for the author */
   hasEmailAlerts: boolean;
-  /** Indicates if it is possible to subscribe to push alerts for the author */
-  hasPushAlerts: boolean;
 }
