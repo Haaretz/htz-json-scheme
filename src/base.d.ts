@@ -95,7 +95,7 @@ export interface TeaserData {
   /** The last-update date of the represented content **/
   lastUpdateDate?: number,
   /** The authors list of the represented content **/
-  authors?: (Author|string)[],git satsh
+  authors?: (Author|string)[],
   /** The image of the first author from the authors list of the represented content **/
   authorImage?: Image,
   /** The reporting-from value from represented content **/
