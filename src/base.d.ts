@@ -51,7 +51,7 @@ export interface List extends Content {
   /** A URL associated with the list, will commonly direct to a section-page */
   url?: string;
   /** Text to be inserted as a link to the list's `url`. Only relevant in certain lists. */
-  urlDescription?: string
+  urlDescription?: string;
   /** Indicates if the list is paginated. */
   hasPagination: boolean;
   /** The list's content items */
@@ -63,49 +63,57 @@ export interface List extends Content {
  */
 export interface TeaserData {
   /** The content id of the represented content **/
-  contentId: string,
+  contentId: string;
   /** The url of the represented content **/
-  path: string,
+  path: string;
   /** The title of the represented content **/
-  title: string,
+  title: string;
   /** The mobile-title of the represented content **/
-  titleMobile: string,
+  titleMobile: string;
   /** The subtitle of the represented content **/
-  subtitle?: string,
+  subtitle?: string;
   /** The mobile subtitle of the represented content **/
-  subtitleMobile?: string,
+  subtitleMobile?: string;
   /** The exclusive(kicker) of the represented content **/
-  exclusive?: string,
+  exclusive?: string;
   /** The mobile exclusive(kicker) of the represented content **/
-  exclusiveMobile?: string,
+  exclusiveMobile?: string;
   /** The hash code for viewing premium content **/
-  hash?: string,
+  hash?: string;
   /** flag indicating if the content is premium content **/
-  isPremiumContent?: boolean,
+  isPremiumContent?: boolean;
   /** The lead text from represented content **/
-  leadText?: string,
+  leadText?: string;
   /** The comment conut for content **/
-  commentsCount?: number,
+  commentsCount?: number;
   /** The first-paragraph from the represented content **/
-  firstParagraph?: string,
+  firstParagraph?: string;
   /** The image for teaser **/
-  image?: Image,
+  image?: Image;
   /** The publishing date of the represented content **/
-  publishDate?: number,
+  publishDate?: number;
   /** The last-update date of the represented content **/
-  lastUpdateDate?: number,
+  lastUpdateDate?: number;
   /** The authors list of the represented content **/
-  authors?: (Author|string)[],
+  authors?: (Author|string)[];
   /** The image of the first author from the authors list of the represented content **/
-  authorImage?: Image,
+  authorImage?: Image;
   /** The reporting-from value from represented content **/
-  reportingFrom?: string,
+  reportingFrom?: string;
   /** flags object represent the available media-types inside the represented content (video, gallery, etc') **/
-  mediaFlags?: Object,
+  mediaFlags?: MediaFlags;
   /** A list of related-content to the represented content **/
-  relatedArticles?: TeaserData[],
+  relatedArticles?: TeaserData[];
   /** Used for ordering event-tickets (mouse-site) **/
-  tixwise?: Object
+  tixwise?: Object;
+}
+
+/** MediaFlags represent the type of media that a content contains. **/
+export interface MediaFlags {
+  image?: boolean;
+  video?: boolean;
+  html_embed?: boolean;
+  gallery?: boolean;
 }
 
 /** Data about an individual image in an `imgArray` */
