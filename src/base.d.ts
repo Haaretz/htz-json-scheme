@@ -55,7 +55,57 @@ export interface List extends Content {
   /** Indicates if the list is paginated. */
   hasPagination: boolean;
   /** The list's content items */
-  items: Content[];
+  items: TeaserData[];
+}
+
+/**
+ * TeaserData is a common interface for describing different types of Polopoly content(Articles, Teasers, mouse-site object, blogs)
+ */
+export interface TeaserData {
+  /** The content id of the represented content **/
+  contentId: string,
+  /** The url of the represented content **/
+  path: string,
+  /** The title of the represented content **/
+  title: string,
+  /** The mobile-title of the represented content **/
+  titleMobile: string,
+  /** The subtitle of the represented content **/
+  subtitle?: string,
+  /** The mobile subtitle of the represented content **/
+  subtitleMobile?: string,
+  /** The exclusive(kicker) of the represented content **/
+  exclusive?: string,
+  /** The mobile exclusive(kicker) of the represented content **/
+  exclusiveMobile?: string,
+  /** The hash code for viewing premium content **/
+  hash?: string,
+  /** flag indicating if the content is premium content **/
+  isPremiumContent?: boolean,
+  /** The lead text from represented content **/
+  leadText?: string,
+  /** The comment conut for content **/
+  commentsCount?: number,
+  /** The first-paragraph from the represented content **/
+  firstParagraph?: string,
+  /** The image for teaser **/
+  image?: Image,
+  /** The publishing date of the represented content **/
+  publishDate?: number,
+  /** The last-update date of the represented content **/
+  lastUpdateDate?: number,
+  /** The authors list of the represented content **/
+  authors?: (Author|string)[],git satsh
+  /** The image of the first author from the authors list of the represented content **/
+  authorImage?: Image,
+  /** The reporting-from value from represented content **/
+  reportingFrom?: string,
+  /** flags object represent the available media-types inside the represented content (video, gallery, etc') **/
+  mediaFlags?: Object,
+  /** A list of related-content to the represented content **/
+  relatedArticles?: TeaserData[],
+  /** Used for ordering event-tickets (mouse-site) **/
+  tixwise?: Object
 }
 
 /** Data about an individual image in an `imgArray` */
